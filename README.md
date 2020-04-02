@@ -15,7 +15,7 @@ $ `git clone https://github.com/bashshadrack/Attendance-List.git`
 $ `cd Attendance-list`
 
 ### Install the required dependencies:
-$ `npm start`
+$ `npm init react-app`
 
 This will run the command to check linting, and also serve up the app on
 http://localhost:3000
