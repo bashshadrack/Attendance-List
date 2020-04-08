@@ -9,7 +9,8 @@ import {
 } from "mdbreact";
 import Select from "react-select";
 import countryList from "react-select-country-list";
-// import Calendar from "react-calendar";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "../App.css";
 
 class SignUp extends Component {
@@ -23,6 +24,15 @@ class SignUp extends Component {
       value: null,
     };
   }
+  state = {
+    startDate: new Date(),
+  };
+
+  handleChange = (date) => {
+    this.setState({
+      startDate: date,
+    });
+  };
 
   changeHandler = (value) => {
     this.setState({ value });
@@ -35,7 +45,7 @@ class SignUp extends Component {
           <MDBCol md="3"></MDBCol>
 
           <MDBCol md="6">
-            <MDBListGroup className={"groupList"}>
+            <MDBListGroup>
               <MDBListGroupItem className="groupItem">
                 PERSONAL INFORMATION
               </MDBListGroupItem>
@@ -96,11 +106,13 @@ class SignUp extends Component {
 
                   <div className="inputstyles">
                     {" Starting Date"}
-                    <input
-                      type="text"
-                      id="UserName"
-                      className="inputclass form-control form-control-sm"
-                    />
+                    <div className="form-control form-control-sm">
+                      <DatePicker
+                        className="datepicker"
+                        selected={this.state.startDate}
+                        onChange={this.handleChange}
+                      />
+                    </div>
                   </div>
                   <MDBRow>
                     <MDBCol md="6">
@@ -136,7 +148,9 @@ class SignUp extends Component {
                       onChange={this.changeHandler}
                     />
                   </div>
-                  <MDBBtn color="primary" className="signupbtn">SIGN UP</MDBBtn>
+                  <MDBBtn color="primary" className="signupbtn">
+                    SIGN UP
+                  </MDBBtn>
                 </Fragment>
               </MDBListGroupItem>
             </MDBListGroup>
