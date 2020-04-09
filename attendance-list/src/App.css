@@ -1,5 +1,5 @@
 .groupItem {
-  background-color: #4285F4;
+  background-color: #4285f4;
   height: 40px;
   color: #fff;
   text-align: left;
@@ -16,19 +16,23 @@
   margin-top: 18px;
   font-weight: 400;
 }
+
 .signupbtn {
   color: #fff;
   background-color: "primary";
   width: 30%;
   height: 40px;
   margin-left: 70%;
-
+  padding: 10px;
 }
 .datepicker {
- margin-left: -5px;
- margin-top: -2px;
- width: 490px;
- border-style: none;
-  
+  margin-left: -5px;
+  margin-top: -2px;
+  width: 492px;
+  border-style: none;
 }
-
+@media (max-width: 720px) {
+  .datepicker {
+    width: 100% !important;
+  }
+}
