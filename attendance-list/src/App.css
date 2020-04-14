@@ -83,6 +83,18 @@ p {
   width: 492px;
   border-style: none;
 }
+.logingroup{
+  margin-top: 150px;
+}
+.loginbtn {
+   color: #fff;
+  background-color: "primary";
+  width: 40%;
+  height: 40px;
+  margin-left: 30%;
+  margin-top: 30px;
+  padding: 10px;
+}
 @media (max-width: 720px) {
   .datepicker {
     width: 100% !important;
@@ -107,5 +119,9 @@ p {
   }
   .checkinbtn {
   margin-left: 35%;
+}
+.loginbtn {
+  width: 40%;
+  margin-left: 30%;
 }
 }
