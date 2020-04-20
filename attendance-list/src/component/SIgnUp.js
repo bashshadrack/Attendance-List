@@ -22,11 +22,18 @@ class SignUp extends Component {
     this.state = {
       options: this.options,
       value: null,
+      FirstName: "",
+      LastName: "",
+      Email: "",
+      UserName: "",
+      AffiliatedCo: "",
+      StartDate: new Date(),
+      Gender1: "Male",
+      Gender2: "Female",
+      MobNumber: "",
+      Password: "",
     };
   }
-  state = {
-    startDate: new Date(),
-  };
 
   handleChange = (date) => {
     this.setState({
@@ -36,6 +43,14 @@ class SignUp extends Component {
 
   changeHandler = (value) => {
     this.setState({ value });
+  };
+  submitHandler = (event) => {
+    event.preventDefault();
+    event.target.className += " was-validated";
+  };
+
+  validateHandler = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
@@ -50,13 +65,17 @@ class SignUp extends Component {
                 PERSONAL INFORMATION
               </MDBListGroupItem>
               <MDBListGroupItem>
-                <Fragment>
+                <form onSubmit={this.submitHandler} noValidate>
                   <MDBRow className="FullName">
                     <MDBCol md="6">
                       <div>
                         <label className="namelabel">First Name</label>
                         <input
                           type="text"
+                          name="FirstName"
+                          value={this.state.FirstName}
+                          onChange={this.validateHandler}
+                          required
                           id="FirstName"
                           className="inputclass form-control form-control-sm"
                         />
@@ -68,7 +87,11 @@ class SignUp extends Component {
                         <label className="namelabel ">Last Name</label>
                         <input
                           type="text"
+                          onChange={this.validateHandler}
+                          required
                           id="LastName"
+                          name="LastName"
+                          value={this.state.LastName}
                           className="inputclass form-control form-control-sm"
                         />
                       </div>
@@ -79,6 +102,10 @@ class SignUp extends Component {
                     {" Email Address"}
                     <input
                       type="text"
+                      name="Email"
+                      value={this.state.Email}
+                      onChange={this.validateHandler}
+                      required
                       id="Email"
                       className="inputclass form-control form-control-sm"
                     />
@@ -88,17 +115,24 @@ class SignUp extends Component {
                     {" Create Password"}
                     <input
                       type="password"
+                      name="Password"
+                      value={this.state.Password}
                       id="Password"
+                      onChange={this.validateHandler}
+                      required
                       className="inputclass form-control form-control-sm"
                       placeholder="Maxmum 6 charactors "
                     />
-                    {/* <div>Maxmum 6 charactors</div> */}
                   </div>
 
                   <div className="inputstyles">
                     {" Create UserName"}
                     <input
                       type="text"
+                      name="UserName"
+                      value={this.state.UserName}
+                      onChange={this.validateHandler}
+                      required
                       id="UserName"
                       className="inputclass form-control form-control-sm"
                     />
@@ -118,13 +152,20 @@ class SignUp extends Component {
                     <MDBCol md="6">
                       <div className="inputstyles">
                         {" Select Gender"}
-                        <select className="form-control form-control-sm">
-                          <option>Whats Your Gender</option>
-                          <option value="1" id="Male">
-                            Male
+
+                        <select
+                          className="form-control form-control-sm"
+                          onChange={this.validateHandler}
+                          required
+                        >
+                          <option disabled selected>
+                            Select Gender
                           </option>
-                          <option value="2" id="Female">
-                            Female
+                          <option name="Gnder1" value={this.state.Gender1}>
+                            {this.state.Gender1}
+                          </option>
+                          <option name="Gnder2" value={this.state.Gender2}>
+                            {this.state.Gender2}
                           </option>
                         </select>
                       </div>
@@ -134,6 +175,10 @@ class SignUp extends Component {
                         {" Mobile Number"}
                         <input
                           type="text"
+                          name="MobNumber"
+                          value={this.state.MobNumber}
+                          onChange={this.validateHandler}
+                          required
                           id="MobleNumber"
                           className="inputclass form-control form-control-sm"
                         />
@@ -148,10 +193,10 @@ class SignUp extends Component {
                       onChange={this.changeHandler}
                     />
                   </div>
-                  <MDBBtn color="primary" className="signupbtn">
+                  <MDBBtn color="primary" type="submit" className="signupbtn">
                     SIGN UP
                   </MDBBtn>
-                </Fragment>
+                </form>
               </MDBListGroupItem>
             </MDBListGroup>
           </MDBCol>

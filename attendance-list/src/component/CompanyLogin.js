@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState } from "react";
+import React, { Component } from "react";
 import {
   MDBListGroup,
   MDBListGroupItem,
@@ -14,6 +14,19 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../App.css";
 
 class CompanyLogin extends Component {
+  state = {
+    User: "",
+    password: "",
+  };
+
+  submitHandler = (event) => {
+    event.preventDefault();
+    event.target.className += " was-validated";
+  };
+
+  changeHandler = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
   render() {
     return (
       <MDBContainer>
@@ -26,12 +39,16 @@ class CompanyLogin extends Component {
                 COMPANY LOGIN
               </MDBListGroupItem>
               <MDBListGroupItem>
-                <Fragment>
+                <form onSubmit={this.submitHandler} noValidate>
                   <div className="inputstyles">
                     {" UserName or Email"}
                     <input
                       type="text"
+                      value={this.state.User}
+                      onChange={this.changeHandler}
                       id="User"
+                      required
+                      name="User"
                       className="form-control form-control-sm"
                     />
                   </div>
@@ -40,17 +57,21 @@ class CompanyLogin extends Component {
                     {" Password"}
                     <input
                       type="password"
+                      value={this.state.password}
+                      onChange={this.changeHandler}
                       id="Password"
+                      name="password"
+                      required
                       className="form-control form-control-sm"
                       placeholder="Enter your created Password "
                     />
                     {/* <div>Maxmum 6 charactors</div> */}
                   </div>
 
-                  <MDBBtn color="primary" className="loginbtn">
+                  <MDBBtn color="primary" className="loginbtn" type="submit">
                     LOGIN
                   </MDBBtn>
-                </Fragment>
+                </form>
               </MDBListGroupItem>
             </MDBListGroup>
           </MDBCol>
