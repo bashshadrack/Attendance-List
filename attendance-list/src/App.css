@@ -95,6 +95,13 @@ p {
   margin-top: 30px;
   padding: 10px;
 }
+
+.navstyle {
+  color: #fff;
+}
+.popper{
+  width: 100%;
+}
 @media (max-width: 720px) {
   .datepicker {
     width: 100% !important;

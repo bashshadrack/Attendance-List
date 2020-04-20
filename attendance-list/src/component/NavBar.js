@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import logo from "../logo.png";
 import { MDBContainer, MDBRow, MDBCol, MDBLink } from "mdbreact";
 import { render } from "@testing-library/react";
-
+import { Link } from "react-router-dom";
 class NavBar extends Component {
   render() {
     return (
@@ -13,9 +13,12 @@ class NavBar extends Component {
           </MDBCol>
           <MDBCol md="8">
             <ul className="Navlinks">
-              <li>Company LogIn</li>
-              <li className="signlink">SignUp</li>
-
+              <Link className="navstyle" to="/login">
+                <li>Company LogIn</li>
+              </Link>
+              <Link className="navstyle" to="/signup">
+                <li className="signlink">SignUp</li>
+              </Link>
             </ul>
           </MDBCol>
         </MDBRow>
